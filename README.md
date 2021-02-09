@@ -9,3 +9,6 @@ This is a project of an app based on [Magia Reacta](https://eduweb.pl/programowa
 Live version can be found [here]('').
 
 ## Technologies used
+
+- React
+- Bulma
