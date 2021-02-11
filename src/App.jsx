@@ -10,8 +10,8 @@ import styles from './App.module.scss';
 function App() {
   return (
     <Router>
+      <Header />
       <div className={styles.app}>
-        <Header />
         <Route path='/' exact component={Documents} />
         <Route path='/tips' exact component={Tips} />
         <Route path='/patterns' exact component={Patterns} />
