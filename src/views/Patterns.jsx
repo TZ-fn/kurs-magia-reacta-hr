@@ -2,7 +2,7 @@ import React from 'react';
 
 const Patterns = () => (
   <div>
-    <h2 className='title'>Patterns</h2>
+    <h2 className='title is-3'>Patterns</h2>
   </div>
 );
 

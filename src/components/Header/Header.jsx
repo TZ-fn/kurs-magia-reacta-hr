@@ -1,39 +1,36 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from 'components/Header/Header.module.scss';
-import cx from 'classnames';
 
 const Header = () => {
-  const classList = cx('is-primary', styles.header);
   return (
-    <header className={classList}>
-      <h1 className='title is-primary'>Magia Reacta</h1>
-      <h2 className='subtitle is-primary mb-6'>Kurs zaawansowany</h2>
-      <div className='tabs is-centered'>
-        <ul>
-          <li>
-            <NavLink to='/' className='button is-primary'>
-              Documents
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/tips' className='button is-primary'>
-              Tips
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/patterns' className='button is-primary'>
-              Patterns
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/components' className='button is-primary'>
-              Components
-            </NavLink>
-          </li>
-        </ul>
+    <section className='hero is-primary'>
+      <div className='hero-body'>
+        <div className='container has-text-centered is-centered'>
+          <h1 className='title'>Magia Reacta</h1>
+          <h2 className='subtitle'>Kurs zaawansowany</h2>
+        </div>
       </div>
-    </header>
+      <div className='hero-foot'>
+        <nav className='tabs is-centered'>
+          <div className='container'>
+            <ul>
+              <li>
+                <NavLink to='/'>Documents</NavLink>
+              </li>
+              <li>
+                <NavLink to='/tips'>Tips</NavLink>
+              </li>
+              <li>
+                <NavLink to='/patterns'>Patterns</NavLink>
+              </li>
+              <li>
+                <NavLink to='/components'>Components</NavLink>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </section>
   );
 };
 
