@@ -14,7 +14,7 @@ const withCollapse = (WrappedComponent) => {
 
     render() {
       const { isCollapsed } = this.state;
-      return <WrappedComponent isCollapsed={isCollapsed} toggle={this.toggle} />;
+      return <WrappedComponent isCollapsed={isCollapsed} toggle={this.toggle} {...this.props} />;
     }
   };
 };
