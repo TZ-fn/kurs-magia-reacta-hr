@@ -16,23 +16,27 @@ const Columns = ({ isCollapsed, toggle, isAuthorised, toggleAuth }) => {
         Collapse
       </button>
       <button type='button' className='button is-warning is-large' onClick={toggleAuth}>
-        Login
+        {isAuthorised ? 'Logout' : 'Login'}
       </button>
       <h2 className='title is-4'>Authorised: {isAuthorised.toString()}</h2>
-      <div className={columnsClass}>
-        <div className='column'>
-          <div className='notification is-primary'>First column</div>
+      {isAuthorised ? (
+        <div className={columnsClass}>
+          <div className='column'>
+            <div className='notification is-primary'>First column</div>
+          </div>
+          <div className='column'>
+            <div className='notification is-primary'>Second column</div>
+          </div>
+          <div className='column'>
+            <div className='notification is-primary'>Third column</div>
+          </div>
+          <div className='column'>
+            <div className='notification is-primary'>Forth column</div>
+          </div>
         </div>
-        <div className='column'>
-          <div className='notification is-primary'>Second column</div>
-        </div>
-        <div className='column'>
-          <div className='notification is-primary'>Third column</div>
-        </div>
-        <div className='column'>
-          <div className='notification is-primary'>Forth column</div>
-        </div>
-      </div>
+      ) : (
+        <h2 className='title is-2'>Please login to continue.</h2>
+      )}
     </>
   );
 };
