@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import withCollapse from 'components/hoc/withCollapse';
+import Collapse from 'components/providers/Collapse';
 import PropTypes from 'prop-types';
 import styles from './ItemsList.module.scss';
 
@@ -34,4 +34,4 @@ ItemsList.propTypes = {
   toggle: PropTypes.func.isRequired,
 };
 
-export default withCollapse(ItemsList);
+export default Collapse(ItemsList);

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { compose } from 'recompose';
-import withCollapse from 'components/hoc/withCollapse';
+import Collapse from 'components/providers/Collapse';
 import withAuth from 'components/hoc/withAuth';
 import styles from './Columns.module.scss';
 
@@ -49,4 +49,4 @@ Columns.propTypes = {
   toggleAuth: PropTypes.func.isRequired,
 };
 
-export default compose(withAuth, withCollapse)(Columns);
+export default compose(withAuth, Collapse)(Columns);
