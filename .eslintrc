@@ -16,7 +16,8 @@
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "react/state-in-constructor": 0,
     "no-underscore-dangle": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "no-plusplus": "off"
   },
   "settings": {
     "import/resolver": {
