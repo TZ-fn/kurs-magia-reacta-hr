@@ -21,6 +21,22 @@ const Components = () => {
     setInputContent(e.target.value);
   };
 
+  const addNewItem = () => {
+    if (inputContent.trim()) {
+      const newItem = {
+        id: itemsList.length + 1,
+        content: inputContent,
+      };
+      setItemsList([...itemsList, newItem]);
+      setInputContent('');
+    }
+  };
+
+  const removeItem = (id) => {
+    const newItemsList = itemsList.filter((item) => item.id !== id);
+    setItemsList(newItemsList);
+  };
+
   return (
     <div>
       <div className='container'>
@@ -38,15 +54,21 @@ const Components = () => {
           <button
             type='button'
             className={cx('button', 'is-primary', styles['margin-bottom'])}
-            onClick={setItemsList}
+            onClick={addNewItem}
           >
             Add a new item
           </button>
           <h3 className='title is-4'>To do&apos;s:</h3>
+
           {itemsList.map((item) => {
             return (
-              <div className='notification is-background'>
-                <button type='button' className='delete' aria-label='Close this notification.' />
+              <div className={cx('notification', 'is-background', styles.item)} key={item.id}>
+                <button
+                  type='button'
+                  className='delete'
+                  aria-label='Close this notification.'
+                  onClick={() => removeItem(item.id)}
+                />
                 {item.content}
               </div>
             );
