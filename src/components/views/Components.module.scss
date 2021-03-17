@@ -2,10 +2,18 @@
   width: 800px;
 }
 
-.margin-bottom {
-  margin-bottom: 25px;
+.margin {
+  margin: 0 20px 25px 0;
+}
+
+.margin:last-child {
+  margin: 0 0 25px 0;
 }
 
 .item {
   filter: brightness(90%);
+}
+
+.filter-container {
+  display: flex;
 }

@@ -4,6 +4,7 @@ import styles from './Components.module.scss';
 
 const Components = () => {
   const [inputContent, setInputContent] = useState('');
+  const [filterContent, setFilterContent] = useState('');
   const [itemsList, setItemsList] = useState([
     {
       id: 0,
@@ -19,6 +20,10 @@ const Components = () => {
 
   const handleInputChange = (e) => {
     setInputContent(e.target.value);
+  };
+
+  const handleFilterChange = (e) => {
+    setFilterContent(e.target.value);
   };
 
   const addNewItem = () => {
@@ -37,6 +42,15 @@ const Components = () => {
     setItemsList(newItemsList);
   };
 
+  const filterTasks = () => {
+    if (filterContent.trim()) {
+      return itemsList.filter((item) =>
+        item.content.toLowerCase().includes(filterContent.toLowerCase()),
+      );
+    }
+    return itemsList;
+  };
+
   return (
     <div>
       <div className='container'>
@@ -45,22 +59,32 @@ const Components = () => {
           <input
             name='name'
             type='text'
-            className={cx('input', styles['margin-bottom'])}
+            className={cx('input', styles.margin)}
             onChange={handleInputChange}
             value={inputContent}
             placeholder='Write your task...'
           />
+          <div className={styles['filter-container']}>
+            <button
+              type='button'
+              className={cx('button', 'is-primary', styles.margin)}
+              onClick={addNewItem}
+            >
+              Add a new item
+            </button>
 
-          <button
-            type='button'
-            className={cx('button', 'is-primary', styles['margin-bottom'])}
-            onClick={addNewItem}
-          >
-            Add a new item
-          </button>
+            <input
+              name='name'
+              type='text'
+              className={cx('input', styles.margin)}
+              onChange={handleFilterChange}
+              value={filterContent}
+              placeholder='Filter your tasks...'
+            />
+          </div>
+
           <h3 className='title is-4'>To do&apos;s:</h3>
-
-          {itemsList.map((item) => {
+          {filterTasks().map((item) => {
             return (
               <div className={cx('notification', 'is-background', styles.item)} key={item.id}>
                 <button
