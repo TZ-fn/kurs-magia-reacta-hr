@@ -72,15 +72,17 @@ const Components = () => {
             >
               Add a new item
             </button>
-
-            <input
-              name='name'
-              type='text'
-              className={cx('input', styles.margin)}
-              onChange={handleFilterChange}
-              value={filterContent}
-              placeholder='Filter your tasks...'
-            />
+            <label htmlFor='search'>
+              Search by content
+              <input
+                name='search'
+                type='search'
+                className={cx('input', styles.margin)}
+                onChange={handleFilterChange}
+                value={filterContent}
+                placeholder=''
+              />
+            </label>
           </div>
 
           <h3 className='title is-4'>To do&apos;s:</h3>
