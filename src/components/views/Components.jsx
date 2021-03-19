@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import cx from 'classnames';
 import styles from './Components.module.scss';
 
 const Components = () => {
-  const [inputContent, setInputContent] = useState('');
-  const [filterContent, setFilterContent] = useState('');
+  const [inputsContent, setInputContent] = useReducer(
+    (state, newState) => ({ ...state, ...newState }),
+    {
+      itemInputContent: '',
+      searchInputContent: '',
+    },
+  );
   const [itemsList, setItemsList] = useState([
     {
       id: 0,
@@ -19,21 +24,17 @@ const Components = () => {
   ]);
 
   const handleInputChange = (e) => {
-    setInputContent(e.target.value);
-  };
-
-  const handleFilterChange = (e) => {
-    setFilterContent(e.target.value);
+    setInputContent({ [e.target.name]: e.target.value });
   };
 
   const addNewItem = () => {
-    if (inputContent.trim()) {
+    if (inputsContent.itemInputContent.trim()) {
       const newItem = {
         id: itemsList.length + 1,
-        content: inputContent,
+        content: inputsContent.itemInputContent,
       };
       setItemsList([...itemsList, newItem]);
-      setInputContent('');
+      setInputContent({ itemInputContent: '' });
     }
   };
 
@@ -42,14 +43,10 @@ const Components = () => {
     setItemsList(newItemsList);
   };
 
-  const filterTasks = () => {
-    if (filterContent.trim()) {
-      return itemsList.filter((item) =>
-        item.content.toLowerCase().includes(filterContent.toLowerCase()),
-      );
-    }
-    return itemsList;
-  };
+  const filterTasks = () =>
+    itemsList.filter((item) =>
+      item.content.toLowerCase().includes(inputsContent.searchInputContent.toLowerCase()),
+    );
 
   return (
     <div>
@@ -57,14 +54,14 @@ const Components = () => {
         <div className={styles.wrapper}>
           <h2 className='title is-3'>To Do List</h2>
           <input
-            name='name'
+            name='itemInputContent'
             type='text'
             className={cx('input', styles.margin)}
             onChange={handleInputChange}
-            value={inputContent}
+            value={inputsContent.itemInputContent}
             placeholder='Write your task...'
           />
-          <div className={styles['filter-container']}>
+          <div className={styles['search-container']}>
             <button
               type='button'
               className={cx('button', 'is-primary', styles.margin)}
@@ -72,15 +69,15 @@ const Components = () => {
             >
               Add a new item
             </button>
-            <label htmlFor='search'>
+            <label htmlFor='searchInputContent'>
               Search by content
               <input
-                name='search'
+                name='searchInputContent'
                 type='search'
                 className={cx('input', styles.margin)}
-                onChange={handleFilterChange}
-                value={filterContent}
-                placeholder=''
+                onChange={handleInputChange}
+                value={inputsContent.searchInputContent}
+                placeholder='Search for a task...'
               />
             </label>
           </div>
