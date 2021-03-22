@@ -26,6 +26,9 @@ const Header = () => {
               <li>
                 <NavLink to='/components'>Components</NavLink>
               </li>
+              <li>
+                <NavLink to='/useEffectSandbox'>UseEffectSandbox</NavLink>
+              </li>
             </ul>
           </div>
         </nav>
