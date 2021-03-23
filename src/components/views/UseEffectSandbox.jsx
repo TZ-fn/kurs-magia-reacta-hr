@@ -1,14 +1,25 @@
-import React, { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const UseEffectSandbox = () => {
+  const [itemsList, setItemsList] = useState([]);
+
   useEffect(() => {
-    const data = fetch('https://run.mocky.io/v3/d6b1b139-cb05-4c36-b751-6a6b316898a3');
-    return data.then((response) => response.json()).then((items) => console.log(items));
-  });
+    const fetchData = async () => {
+      const response = await axios.get(
+        'https://run.mocky.io/v3/5795a752-0676-48d6-b033-6648908bad1c',
+      );
+      setItemsList(response.data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div>
       <h1 className='title is-3'>useEffect Sandbox</h1>
+      {itemsList.map((item) => {
+        return <p key={item.content}>{item.content}</p>;
+      })}
     </div>
   );
 };
