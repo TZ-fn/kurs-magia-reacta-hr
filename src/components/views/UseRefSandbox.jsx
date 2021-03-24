@@ -1,25 +1,18 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import styles from './UseRefSandbox.module.scss';
 
 const UseRefSandbox = () => {
-  const [itemsList, setItemsList] = useState([]);
+  const boxRef = useRef(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        'https://run.mocky.io/v3/5795a752-0676-48d6-b033-6648908bad1c',
-      );
-      setItemsList(response.data);
-    };
-    fetchData();
-  }, []);
+    gsap.from(boxRef.current, { x: '-500%', opacity: 0, duration: 2 });
+  });
 
   return (
     <div>
-      <h1 className='title is-3'>useRef Sandbox</h1>
-      {itemsList.map((item) => {
-        return <p key={item.content}>{item.content}</p>;
-      })}
+      <h2 className='title'>UseRefSandbox</h2>
+      <div className={styles.square} ref={boxRef} />
     </div>
   );
 };
