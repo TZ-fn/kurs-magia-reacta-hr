@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import UseEffectSandbox from 'components/views/UseEffectSandbox';
 import UseRefSandbox from 'components/views/UseRefSandbox';
+import Users from 'components/views/Users';
 import Header from './components/Header/Header';
 import Tips from './components/views/Tips';
 import Patterns from './components/views/Patterns';
@@ -20,6 +21,7 @@ function App() {
         <Route path='/components' exact component={Components} />
         <Route path='/useEffectSandbox' exact component={UseEffectSandbox} />
         <Route path='/useRefSandbox' exact component={UseRefSandbox} />
+        <Route path='/users' exact component={Users} />
       </div>
     </Router>
   );

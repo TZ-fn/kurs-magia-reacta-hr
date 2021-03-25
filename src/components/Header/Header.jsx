@@ -32,6 +32,9 @@ const Header = () => {
               <li>
                 <NavLink to='/useRefSandbox'>UseRefSandbox</NavLink>
               </li>
+              <li>
+                <NavLink to='/users'>Users</NavLink>
+              </li>
             </ul>
           </div>
         </nav>
