@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import cs from 'classnames';
 
 const Users = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const toggleModalVisibility = () => {
-    setModalVisible(() => !isModalVisible);
+    setModalVisible(!isModalVisible);
   };
 
   return (
@@ -12,7 +13,7 @@ const Users = () => {
       <button className='button is-primary' onClick={toggleModalVisibility} type='button'>
         Show modal
       </button>
-      <div className={`modal ${isModalVisible ? 'is-active' : ''}`}>
+      <div className={cs('modal', isModalVisible ? 'is-active' : '')}>
         <div className='modal-background' />
         <div className='modal-content'>
           <article className='message is-primary'>
