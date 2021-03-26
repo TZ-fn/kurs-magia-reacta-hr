@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import cs from 'classnames';
 
 const Users = () => {
   const [isModalVisible, setModalVisible] = useState(false);
-  const toggleModalVisibility = () => {
-    setModalVisible(!isModalVisible);
-  };
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', (e) => {
+      if (!modalRef.current || modalRef.current.contains(e.target)) {
+        return;
+      }
+      setModalVisible(false);
+    });
+  }, []);
 
   return (
     <div>
       <h2 className='title'>Users</h2>
-      <button className='button is-primary' onClick={toggleModalVisibility} type='button'>
+      <button className='button is-primary' onClick={() => setModalVisible(true)} type='button'>
         Show modal
       </button>
       <div className={cs('modal', isModalVisible ? 'is-active' : '')}>
         <div className='modal-background' />
-        <div className='modal-content'>
+        <div ref={modalRef} className='modal-content'>
           <article className='message is-primary'>
             <div className='message-header'>
               <p>Hello World</p>
             </div>
             <div className='message-body'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.{' '}
               <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.
               Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
               efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
@@ -31,7 +38,7 @@ const Users = () => {
           </article>
         </div>
         <button
-          onClick={toggleModalVisibility}
+          onClick={() => setModalVisible(false)}
           type='button'
           className='modal-close is-large'
           aria-label='close'
