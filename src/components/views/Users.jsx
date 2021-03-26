@@ -1,18 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
+import useDetectOutsideClick from 'components/hooks/useDetectOutsideClick';
 import cs from 'classnames';
 
 const Users = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const modalRef = useRef(null);
 
-  useEffect(() => {
-    document.addEventListener('mousedown', (e) => {
-      if (!modalRef.current || modalRef.current.contains(e.target)) {
-        return;
-      }
-      setModalVisible(false);
-    });
-  }, []);
+  useDetectOutsideClick(modalRef, setModalVisible);
 
   return (
     <div>

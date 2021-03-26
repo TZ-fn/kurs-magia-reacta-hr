@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import useDetectOutsideClick from 'components/hooks/useDetectOutsideClick';
 import Downshift from 'downshift';
 import cx from 'classnames';
 
@@ -11,9 +12,9 @@ const items = [
 ];
 const Patterns = () => {
   const [isTooltipOpen, setTooltipVisibility] = useState(false);
-  const toggleTooltipVisibility = () => {
-    setTooltipVisibility(!isTooltipOpen);
-  };
+  const tooltipRef = useRef(null);
+
+  useDetectOutsideClick(tooltipRef, setTooltipVisibility);
 
   return (
     <div>
@@ -53,11 +54,15 @@ const Patterns = () => {
         )}
       </Downshift>
 
-      <button onClick={toggleTooltipVisibility} type='button' className='button is-warning'>
+      <button
+        onClick={() => setTooltipVisibility(true)}
+        type='button'
+        className='button is-warning'
+      >
         Open tooltip
       </button>
       {isTooltipOpen && (
-        <div className='notification is-warning'>
+        <div ref={tooltipRef} className='notification is-warning'>
           Primar lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor.
           <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.
           Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum felis
