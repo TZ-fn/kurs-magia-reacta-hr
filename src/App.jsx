@@ -8,6 +8,7 @@ import Tips from './components/views/Tips';
 import Patterns from './components/views/Patterns';
 import Components from './components/views/Components';
 import Documents from './components/views/Documents';
+import CompoundComponents from './components/views/CompoundComponents';
 import styles from './App.module.scss';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/useEffectSandbox' exact component={UseEffectSandbox} />
         <Route path='/useRefSandbox' exact component={UseRefSandbox} />
         <Route path='/users' exact component={Users} />
+        <Route path='/compoundComponents' exact component={CompoundComponents} />
       </div>
     </Router>
   );

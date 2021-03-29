@@ -35,6 +35,9 @@ const Header = () => {
               <li>
                 <NavLink to='/users'>Users</NavLink>
               </li>
+              <li>
+                <NavLink to='/compoundComponents'>CompoundComponents</NavLink>
+              </li>
             </ul>
           </div>
         </nav>
