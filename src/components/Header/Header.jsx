@@ -39,7 +39,7 @@ const Header = () => {
                 <NavLink to='/compoundComponents'>CompoundComponents</NavLink>
               </li>
               <li>
-                <NavLink to='/multiStep'>MultiStep</NavLink>
+                <NavLink to='/multiStepView'>MultiStep View</NavLink>
               </li>
             </ul>
           </div>

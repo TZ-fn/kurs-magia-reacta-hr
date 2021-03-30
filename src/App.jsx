@@ -9,7 +9,7 @@ import Patterns from './components/views/Patterns';
 import Components from './components/views/Components';
 import Documents from './components/views/Documents';
 import CompoundComponents from './components/views/CompoundComponents';
-import MultiStep from './components/MultiStep/MultiStep';
+import MultiStepView from './components/views/MultiStepView';
 import styles from './App.module.scss';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
         <Route path='/useRefSandbox' exact component={UseRefSandbox} />
         <Route path='/users' exact component={Users} />
         <Route path='/compoundComponents' exact component={CompoundComponents} />
-        <Route path='/multiStep' exact component={MultiStep} />
+        <Route path='/multiStepView' exact component={MultiStepView} />
       </div>
     </Router>
   );
