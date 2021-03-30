@@ -38,6 +38,9 @@ const Header = () => {
               <li>
                 <NavLink to='/compoundComponents'>CompoundComponents</NavLink>
               </li>
+              <li>
+                <NavLink to='/multiStep'>MultiStep</NavLink>
+              </li>
             </ul>
           </div>
         </nav>
