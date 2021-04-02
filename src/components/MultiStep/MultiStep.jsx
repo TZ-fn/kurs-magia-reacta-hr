@@ -20,9 +20,9 @@ const Controls = () => {
       <button onClick={() => changePage(1)} className='button' type='button'>
         Next
       </button>
-      {/* <button className='button' type='button'>
-      Submit
-    </button> */}
+      <button className='button' type='button'>
+        Submit
+      </button>
     </div>
   );
 };
