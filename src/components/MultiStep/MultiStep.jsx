@@ -6,7 +6,10 @@ const WizardContext = React.createContext({
   changePage: () => {},
 });
 
-const Page = ({ children }) => <div>{children}</div>;
+const Page = ({ children, pageIndex }) => {
+  const { currentPage } = useContext(WizardContext);
+  return currentPage === pageIndex ? children : null;
+};
 
 const Controls = () => {
   const context = useContext(WizardContext);
@@ -20,9 +23,9 @@ const Controls = () => {
       <button onClick={() => changePage(1)} className='button' type='button'>
         Next
       </button>
-      <button className='button' type='button'>
+      {/* <button className='button' type='button'>
         Submit
-      </button>
+      </button> */}
     </div>
   );
 };
@@ -31,14 +34,14 @@ const Wizard = ({ children }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const changePage = (newPageIndex) => {
+    if ((currentPage === 3 && newPageIndex === 1) || (currentPage === 1 && newPageIndex === -1)) {
+      return;
+    }
     setCurrentPage((oldPageIndex) => oldPageIndex + newPageIndex);
   };
 
   return (
-    <WizardContext.Provider value={{ currentPage, changePage }}>
-      {children}
-      <p>{currentPage}</p>
-    </WizardContext.Provider>
+    <WizardContext.Provider value={{ currentPage, changePage }}>{children}</WizardContext.Provider>
   );
 };
 
