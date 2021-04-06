@@ -40,8 +40,13 @@ const Wizard = ({ children }) => {
     setCurrentPage((oldPageIndex) => oldPageIndex + newPageIndex);
   };
 
+  const totalPagesNumber = React.Children.map(children, (child) => child.props.pageIndex).length;
+
   return (
-    <WizardContext.Provider value={{ currentPage, changePage }}>{children}</WizardContext.Provider>
+    <WizardContext.Provider value={{ currentPage, changePage }}>
+      {totalPagesNumber}
+      {children}
+    </WizardContext.Provider>
   );
 };
 
