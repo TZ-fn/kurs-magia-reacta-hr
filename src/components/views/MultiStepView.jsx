@@ -31,6 +31,7 @@ export default function MultiStepView() {
           </div>
         </MultiStep.Page>
         <MultiStep.Controls />
+        <MultiStep.ProgressBar />
       </MultiStep.Wizard>
     </div>
   );
