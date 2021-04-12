@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-it('The App renders default view', () => {
+it('The App renders the default view', () => {
   const divContainer = document.createElement('div');
   ReactDOM.render(<App />, divContainer);
   const appDiv = divContainer.querySelector('.app');
