@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import Input from './Input';
 
 describe('Input component', () => {
@@ -28,8 +28,24 @@ describe('Input component', () => {
 
   it('displays proper value', () => {
     const { getByLabelText } = render(<Input name='Name' label='Name' />);
+    const input = getByLabelText(/name/i);
+    expect(input).toBeInTheDocument();
+    fireEvent.change(input, { target: { value: 'Tomek' } });
+    expect(input).toHaveValue('Tomek');
+  });
 
-    expect(getByLabelText('Name')).toBeInTheDocument();
+  it('prevents user from typing in numbers', () => {
+    const { getByLabelText } = render(<Input name='Name' label='Name' />);
+    const input = getByLabelText(/name/i);
+
+    fireEvent.change(input, { target: { value: 'Tomek123' } });
+    expect(input).toHaveValue('Tomek');
+
+    fireEvent.change(input, { target: { value: '123Tomek123' } });
+    expect(input).toHaveValue('Tomek');
+
+    fireEvent.change(input, { target: { value: '0To1me3k123' } });
+    expect(input).toHaveValue('Tomek');
   });
 
   describe('Async methods', () => {
