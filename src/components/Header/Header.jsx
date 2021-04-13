@@ -41,6 +41,9 @@ const Header = () => {
               <li>
                 <NavLink to='/multiStepView'>MultiStep View</NavLink>
               </li>
+              <li>
+                <NavLink to='/testingSandbox'>Testing Sandbox</NavLink>
+              </li>
             </ul>
           </div>
         </nav>

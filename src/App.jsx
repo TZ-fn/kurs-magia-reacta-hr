@@ -10,6 +10,7 @@ import Components from './components/views/Components';
 import Documents from './components/views/Documents';
 import CompoundComponents from './components/views/CompoundComponents';
 import MultiStepView from './components/views/MultiStepView';
+import TestingSandbox from './components/views/TestingSandbox';
 import styles from './App.module.scss';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path='/users' exact component={Users} />
         <Route path='/compoundComponents' exact component={CompoundComponents} />
         <Route path='/multiStepView' exact component={MultiStepView} />
+        <Route path='/testingSandbox' exact component={TestingSandbox} />
       </div>
     </Router>
   );
