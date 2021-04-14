@@ -34,18 +34,13 @@ describe('Input component', () => {
     expect(input).toHaveValue('Tomek');
   });
 
-  it('prevents user from typing in numbers', () => {
-    const { getByLabelText } = render(<Input name='Name' label='Name' />);
+  it('displays an error when digits are typed in', () => {
+    const { getByLabelText, container } = render(<Input name='Name' label='Name' />);
     const input = getByLabelText(/name/i);
-
+    fireEvent.change(input, { target: { value: 'Tomek' } });
+    expect(container).not.toHaveTextContent(/error/i);
     fireEvent.change(input, { target: { value: 'Tomek123' } });
-    expect(input).toHaveValue('Tomek');
-
-    fireEvent.change(input, { target: { value: '123Tomek123' } });
-    expect(input).toHaveValue('Tomek');
-
-    fireEvent.change(input, { target: { value: '0To1me3k123' } });
-    expect(input).toHaveValue('Tomek');
+    expect(container).toHaveTextContent(/error/i);
   });
 
   describe('Async methods', () => {
