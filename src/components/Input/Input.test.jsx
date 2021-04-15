@@ -2,22 +2,22 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Input from './Input';
 
+const renderInput = (props) => {
+  const utils = render(<Input name='Name' label='Name' {...props} />);
+  const input = utils.getByLabelText(/name/i);
+  return { ...utils, input };
+};
+
 describe('Input component', () => {
   it('renders input element', () => {
-    const placeholderText = 'Name';
-    const { getByPlaceholderText } = render(
-      <Input placeholder={placeholderText} name='Name' label='Name' />,
-    );
-
-    expect(getByPlaceholderText(placeholderText)).toBeInTheDocument();
+    const { input } = renderInput();
+    expect(input).toBeInTheDocument();
   });
 
   it('displays placeholder properly', () => {
     // custom placeholder
     let placeholderText = 'Name';
-    const { getByPlaceholderText, rerender } = render(
-      <Input placeholder={placeholderText} name='Name' label='Name' />,
-    );
+    const { getByPlaceholderText, rerender } = renderInput({ placeholder: placeholderText });
     expect(getByPlaceholderText(placeholderText)).toBeInTheDocument();
 
     // default placeholder
@@ -27,16 +27,14 @@ describe('Input component', () => {
   });
 
   it('displays proper value', () => {
-    const { getByLabelText } = render(<Input name='Name' label='Name' />);
-    const input = getByLabelText(/name/i);
+    const { input } = renderInput();
     expect(input).toBeInTheDocument();
     fireEvent.change(input, { target: { value: 'Tomek' } });
     expect(input).toHaveValue('Tomek');
   });
 
   it('displays an error when digits are typed in', () => {
-    const { getByLabelText, container } = render(<Input name='Name' label='Name' />);
-    const input = getByLabelText(/name/i);
+    const { input, container } = renderInput();
     fireEvent.change(input, { target: { value: 'Tomek' } });
     expect(container).not.toHaveTextContent(/error/i);
     fireEvent.change(input, { target: { value: 'Tomek123' } });
