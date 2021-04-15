@@ -40,8 +40,4 @@ describe('Input component', () => {
     fireEvent.change(input, { target: { value: 'Tomek123' } });
     expect(container).toHaveTextContent(/error/i);
   });
-
-  describe('Async methods', () => {
-    it('works', async () => {});
-  });
 });
