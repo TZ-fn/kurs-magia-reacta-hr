@@ -8,4 +8,9 @@ describe('Header component', () => {
     expect(getByText(/^pl/i)).toBeInTheDocument();
     expect(getByText(/^en/i)).toBeInTheDocument();
   });
+
+  it('displays the default language correctly', () => {
+    const { getByText } = renderWithRouter(<Header />);
+    expect(getByText(/current language is: en/i)).toBeInTheDocument();
+  });
 });
