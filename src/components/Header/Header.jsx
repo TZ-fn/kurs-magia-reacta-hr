@@ -5,7 +5,7 @@ import flagPL from '../../assets/img/poland-flag-icon.png';
 import flagUK from '../../assets/img/united-kingdom-flag-icon.png';
 
 const Header = () => {
-  const { currentLanguage } = useContext(LangContext);
+  const { currentLanguage, setLanguage } = useContext(LangContext);
 
   return (
     <section className='hero is-primary'>
@@ -15,11 +15,19 @@ const Header = () => {
           <h2 className='subtitle'>Kurs zaawansowany</h2>
         </div>
         <div>
-          <button type='button' className='button is-primary is-light'>
+          <button
+            type='button'
+            className='button is-primary is-light'
+            onClick={() => setLanguage('pl')}
+          >
             PL
             <img src={flagPL} alt='Flag of Poland' />
           </button>
-          <button type='button' className='button is-primary is-light'>
+          <button
+            type='button'
+            className='button is-primary is-light'
+            onClick={() => setLanguage('en')}
+          >
             EN
             <img src={flagUK} alt='Flag of United Kingdom' />
           </button>
