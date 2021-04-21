@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import rootAPI from '../../api';
 
 function AsyncTesting() {
   const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
     const getUsersData = async () => {
-      const { data } = await axios.get(
-        'https://run.mocky.io/v3/5c486613-f6dd-48b4-942b-211276aef439?mocky-delay=500ms',
-      );
-      setUsersData(data);
+      try {
+        const { data } = await axios.get(rootAPI);
+        setUsersData(data);
+      } catch (err) {
+        console.log(err);
+      }
     };
     getUsersData();
   }, []);
