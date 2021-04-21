@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import rootAPI from '../../api';
+import UsersList from '../Users/UsersList';
+import { getData } from '../utils/helpers';
 
 function AsyncTesting() {
   const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
-    const getUsersData = async () => {
-      try {
-        const { data } = await axios.get(rootAPI);
-        setUsersData(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getUsersData();
+    getData(rootAPI, setUsersData);
   }, []);
 
   return (
     <div>
       <h2 className='title is-3'>Async Testing</h2>
-      {usersData.length === 0 ? (
+      <UsersList users={usersData} />
+      {/* {usersData.length === 0 ? (
         <div>Loading users...</div>
       ) : (
         usersData.map((user) => {
@@ -31,7 +25,7 @@ function AsyncTesting() {
             </div>
           );
         })
-      )}
+      )} */}
     </div>
   );
 }
