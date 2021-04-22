@@ -5,27 +5,21 @@ import { getData } from '../utils/helpers';
 
 function AsyncTesting() {
   const [usersData, setUsersData] = useState([]);
+  const [errors, setErrors] = useState(false);
 
   useEffect(() => {
-    getData(rootAPI, setUsersData);
+    getData(rootAPI, setUsersData, setErrors);
   }, []);
 
   return (
     <div>
       <h2 className='title is-3'>Async Testing</h2>
       <UsersList users={usersData} />
-      {/* {usersData.length === 0 ? (
-        <div>Loading users...</div>
-      ) : (
-        usersData.map((user) => {
-          return (
-            <div key={user.name}>
-              <p>Name: {user.name}</p>
-              <p>Age: {user.age}</p>
-            </div>
-          );
-        })
-      )} */}
+      {errors && (
+        <div className='notification is-warning'>
+          There was a problem with the server, please try again later.
+        </div>
+      )}
     </div>
   );
 }

@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-export const getData = async (api, dataHandler, errorHandler = console.log) => {
+export const getData = async (api, dataHandler, errorSetter = null) => {
   try {
     const { data } = await axios.get(api);
     dataHandler(data);
+    errorSetter(false);
   } catch (err) {
-    errorHandler(err);
+    errorSetter(true);
   }
 };
 
