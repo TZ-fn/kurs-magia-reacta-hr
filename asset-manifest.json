@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/kurs-magia-reacta-hr/static/css/main.078f0942.chunk.css",
+    "main.js": "/kurs-magia-reacta-hr/static/js/main.5c4f8870.chunk.js",
+    "main.js.map": "/kurs-magia-reacta-hr/static/js/main.5c4f8870.chunk.js.map",
+    "runtime-main.js": "/kurs-magia-reacta-hr/static/js/runtime-main.6356b781.js",
+    "runtime-main.js.map": "/kurs-magia-reacta-hr/static/js/runtime-main.6356b781.js.map",
+    "static/css/2.a5ef3b34.chunk.css": "/kurs-magia-reacta-hr/static/css/2.a5ef3b34.chunk.css",
+    "static/js/2.43e46340.chunk.js": "/kurs-magia-reacta-hr/static/js/2.43e46340.chunk.js",
+    "static/js/2.43e46340.chunk.js.map": "/kurs-magia-reacta-hr/static/js/2.43e46340.chunk.js.map",
+    "index.html": "/kurs-magia-reacta-hr/index.html",
+    "static/css/2.a5ef3b34.chunk.css.map": "/kurs-magia-reacta-hr/static/css/2.a5ef3b34.chunk.css.map",
+    "static/css/main.078f0942.chunk.css.map": "/kurs-magia-reacta-hr/static/css/main.078f0942.chunk.css.map",
+    "static/js/2.43e46340.chunk.js.LICENSE.txt": "/kurs-magia-reacta-hr/static/js/2.43e46340.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6356b781.js",
+    "static/css/2.a5ef3b34.chunk.css",
+    "static/js/2.43e46340.chunk.js",
+    "static/css/main.078f0942.chunk.css",
+    "static/js/main.5c4f8870.chunk.js"
+  ]
+}
