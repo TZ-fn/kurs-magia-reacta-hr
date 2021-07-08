@@ -10,7 +10,7 @@ Another course's topic was testing React apps where I was practising usage of Je
 
 ## Live version
 
-Live version can be found [here]('').
+Live version can be found [here](https://tz-fn.github.io/kurs-magia-reacta-hr/).
 
 ## Technologies used
 
